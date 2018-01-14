@@ -15,7 +15,10 @@ class Solution:
             return 0
         low = 0
         high = len(rotateArray) - 1
-        while high - low > 1:
+        mid = low
+        while rotateArray[high] <= rotateArray[low]:
+            if high - low == 1:
+                return rotateArray[high]
             mid = (low + high) // 2
 
             # 异常情况顺序查找,比如 [1, 1, 1, 0, 1] [1, 0, 1, 1, 1]
@@ -31,7 +34,7 @@ class Solution:
             elif rotateArray[high] >= rotateArray[mid]:
                 high = mid
 
-        return rotateArray[high]
+        return rotateArray[mid]
 
 
 if __name__ == "__main__":
